@@ -7,7 +7,7 @@ comment: false
 
 这里是我的个人技术博客，记录我在 AI 与前端领域的学习、实践与思考。
 
-博客使用 [Astro](https://astro.build/) 构建，追求极致的加载速度与阅读体验。内容基于实际文章，涵盖以下方向：
+博客使用 <a href="https://astro.build/" target="_blank">Astro</a> 构建，追求极致的加载速度与阅读体验。内容基于实际文章，涵盖以下方向：
 
 - **AI 产品解读** — 深度拆解 ToClaw、OpenCut、飞书AI、扣子AI 等产品的能力边界与适用场景
 - **AI 技术原理** — 从 LLM 文字接龙到 Agent Skill，梳理大模型进化的底层逻辑

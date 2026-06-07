@@ -1,6 +1,4 @@
 ---
-import CommentAside from "@/components/CommentAside.astro";
-import {comment} from "@/consts";
 import {getCollectionByName} from "@/utils/getCollectionByName";
 import getUniqueTags from "@/utils/getUniqueTags";
 import getCountByCategory from "@/utils/getCountByCategory";
@@ -82,4 +80,4 @@ let resultPosts = sortPosts.splice(0, site.recentBlogSize);
   </div>
 </div>
 
-{comment.enable && comment.type === "waline" && <CommentAside/>}
+

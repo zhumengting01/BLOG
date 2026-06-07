@@ -4,9 +4,7 @@ import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
 import Profile from '@/components/Profile.astro'
 import BlogAside from '@/components/BlogAside.astro'
-import Comment from '@/components/Comment.astro'
-import Donate from '@/components/Donate.astro'
-import {donate, comment, config} from "@/consts";
+import {config} from "@/consts";
 
 interface Props {
   title?: string;
@@ -28,14 +26,6 @@ const {frontmatter = {comment: false, donate: false}} = Astro.props
   <div class="grid grid-cols-4 gap-8">
     <div class="col-span-4 xl:col-span-3">
       <slot></slot>
-      {
-        donate.enable && frontmatter.donate &&
-        <Donate></Donate>
-      }
-      {
-        comment.enable && frontmatter.comment &&
-        <Comment></Comment>
-      }
     </div>
     <div>
       <div class="hidden xl:block space-y-6">

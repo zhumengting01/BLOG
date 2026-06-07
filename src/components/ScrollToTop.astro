@@ -12,9 +12,9 @@
   // 监听窗口滚动事件
   window.addEventListener('scroll', function() {
     if (window.scrollY > 200) {
-      scrollToTopBtn.style.display = 'block';
+      scrollToTopBtn.classList.remove('hidden');
     } else {
-      scrollToTopBtn.style.display = 'none';
+      scrollToTopBtn.classList.add('hidden');
     }
   });
   // 获取按钮的引用

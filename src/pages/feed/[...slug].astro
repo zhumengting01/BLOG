@@ -3,7 +3,6 @@ import {sortPostsByDate} from "@/utils/sortPostsByDate";
 import {getCollectionByName} from "@/utils/getCollectionByName";
 import {render} from "astro:content";
 import BlogPost from '@/layouts/BlogPost.astro'
-import {comment} from "@/consts";
 import {formatDate} from '@/utils/formatDate'
 import {t} from '@/i18n/utils'
 import getUrl from "@/utils/getUrl";
@@ -43,18 +42,6 @@ if (sortPosts[currentPostIndex + 1]) {
             <i class="ri-calendar-2-fill mr-1"/>
             <div class="tag">{postDate}</div>
           </div>}
-        {comment.enable && comment.type === "waline" && comment.pageview && (
-          <div class="divider-vertical"/>
-          <a href="#" title="当前页面阅读量" class="flex items-center">
-            <i class="ri-fire-fill mr-1"/>
-            <span class="waline-pageview-count" data-path={getUrl('/') + post.collection + '/' + post.id}/>
-          </a>
-          <div class="divider-vertical"/>
-          <a href="#waline" title="当前页面评论数" class="flex items-center">
-            <i class="ri-discuss-fill mr-1"/>
-            <span class="waline-comment-count" data-path={getUrl('/') + post.collection + '/' + post.id}/>
-          </a>
-        )}
       </div>
     )
   }

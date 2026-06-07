@@ -5,8 +5,6 @@ import BlogFooter from '@/components/BlogFooter.astro'
 import {getCollectionByName} from "@/utils/getCollectionByName";
 import {render} from "astro:content";
 import {sortPostsByDate} from "@/utils/sortPostsByDate";
-import Donate from '@/components/Donate.astro'
-import {donate} from "@/consts";
 import getUrl from "@/utils/getUrl";
 
 export async function getStaticPaths() {
@@ -74,10 +72,6 @@ if (sortPosts[currentPostIndex + 1]) {
       }
     </div>
     <BlogFooter title={entry.data.title} url={getUrl('/') + entry.collection + '/' + entry.id} date={entry.data.date} source={entry.data.source}></BlogFooter>
-    {
-      donate.enable && entry.data.donate &&
-      <Donate></Donate>
-    }
   </div>
 
 </BlogPost>
