@@ -144,7 +144,7 @@ import {t} from '@/i18n/utils'
       try {
         const res = await fetch(getUrl("/search.json"))
         if (!res.ok) {
-          throw new Error("Something went wrong...Please try again.");
+          throw new Error("出了点问题……请重试。");
         }
         SEARCH_DATA = await res.json()
       } catch (e) {

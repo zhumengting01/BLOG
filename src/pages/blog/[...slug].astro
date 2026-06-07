@@ -73,7 +73,7 @@ if (sortPosts[currentPostIndex + 1]) {
         )
       }
     </div>
-    <BlogFooter title={entry.data.title} url={getUrl('/') + entry.collection + '/' + entry.id} date={entry.data.date}></BlogFooter>
+    <BlogFooter title={entry.data.title} url={getUrl('/') + entry.collection + '/' + entry.id} date={entry.data.date} source={entry.data.source}></BlogFooter>
     {
       donate.enable && entry.data.donate &&
       <Donate></Donate>

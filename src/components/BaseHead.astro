@@ -26,6 +26,7 @@ let title = Astro.props.title ? `${Astro.props.title} - ${site.title}` : site.ti
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" type="image/svg+xml" href={getUrl(site.favicon)}>
   <meta name="generator" content={Astro.generator}>
+  <meta name="referrer" content="no-referrer">
   <!-- Canonical URL -->
   <link rel="canonical" href={canonicalURL}>
   <link rel="alternate" type="application/rss+xml" title={site.title} href={getUrl('/rss.xml')}>

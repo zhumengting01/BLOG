@@ -23,14 +23,14 @@ import type {AnalyticsConfig} from "./types/analyticsTypes"
  *    All tags will be displayed in single page "/tags".
  */
 export const site = {
-  title: 'Astro Theme Yi', // required
+  title: '朱梦婷的blog', // required
   favicon: '/favicon.svg', // required
-  description: 'Welcome to my independent blog website! ',
-  author: "Astro-Yi", // required
-  avatar: '/avatar.png', // required
+  description: '欢迎来到我的独立博客网站！',
+  author: "朱梦婷", // required
+  avatar: 'https://i-avatar.csdnimg.cn/f41aae3505c04a66a27b60ffde5e7604_Zmt01015621.jpg!1', // required
   url: 'https://astro-yi-nu.vercel.app', // required
   baseUrl: '', // When using GitHubPages, you must enter the repository name startWith '/'. e.g. '/astro-blog'
-  motto: 'Actions speak louder than words.',
+  motto: '行动胜于言语。',
   recentBlogSize: 5,
   archivePageSize: 25,
   postPageSize: 10,
@@ -49,7 +49,7 @@ export const site = {
  * memosPageSize {number} 10
  */
 export const config = {
-  lang: 'en' as 'en' | 'zh-cn' | 'zh-hant' | 'cs', // en | zh-cn | zh-hant | cs
+  lang: 'zh-cn' as 'en' | 'zh-cn' | 'zh-hant' | 'cs', // en | zh-cn | zh-hant | cs
   codeFoldingStartLines: 16, // Need to re-run the project to take effect
 
   // memos config
@@ -67,14 +67,9 @@ export const config = {
  */
 export const categories = [
   {
-    name: "Blog",
+    name: "博客",
     iconClass: "ri-draft-line",
     href: "/blog/1",
-  },
-  {
-    name: "Feed",
-    iconClass: "ri-lightbulb-flash-line",
-    href: "/feed/1",
   },
   // {
   //   name: "Memos",
@@ -82,37 +77,29 @@ export const categories = [
   //   href: "/memos",
   // },
   {
-    name: "Archive",
+    name: "归档",
     iconClass: "ri-archive-line",
     href: "/archive/1",
   },
   {
-    name: "Message",
+    name: "留言",
     iconClass: "ri-chat-1-line",
     href: "/message",
   },
   {
-    name: "Search",
+    name: "搜索",
     iconClass: "ri-search-line",
     href: "/search",
   },
   {
-    name: "More",
-    iconClass: "ri-more-fill",
-    href: "javascript:void(0);",
-    children: [
-      {
-        name: 'About',
-        iconClass: 'ri-information-line',
-        href: '/about',
-      },
-      {
-        name: 'Friends',
-        iconClass: 'ri-user-5-line',
-        href: '/friends',
-        target: '_self',
-      },
-    ]
+    name: "动态",
+    iconClass: "ri-lightbulb-flash-line",
+    href: "/feed/1",
+  },
+  {
+    name: '关于',
+    iconClass: 'ri-information-line',
+    href: '/about',
   }
 ]
 
@@ -121,30 +108,35 @@ export const categories = [
  */
 export const infoLinks = [
   {
-    icon: 'ri-telegram-fill',
-    name: 'telegram',
-    outlink: '',
+    icon: 'ri-mail-fill',
+    name: '邮箱',
+    outlink: 'mailto:2133709665@qq.com',
   },
-  {
-    icon: 'ri-twitter-fill',
-    name: 'twitter',
-    outlink: '',
-  },
-  {
-    icon: 'ri-instagram-fill',
-    name: 'instagram',
-    outlink: '',
-  },
+  // {
+  //   icon: 'ri-twitter-fill',
+  //   name: '推特',
+  //   outlink: '',
+  // },
+  // {
+  //   icon: 'ri-instagram-fill',
+  //   name: '照片墙',
+  //   outlink: '',
+  // },
   {
     icon: 'ri-github-fill',
-    name: 'github',
-    outlink: 'https://github.com/cirry/astro-yi',
+    name: '代码仓库',
+    outlink: 'https://github.com/zhumengting01/astro-yi',
   },
   {
-    icon: 'ri-rss-fill',
-    name: 'rss',
-    outlink: '',
-  }
+    icon: 'csdn-icon',
+    name: 'CSDN',
+    outlink: 'https://blog.csdn.net/Zmt01015621',
+  },
+  // {
+  //   icon: 'ri-rss-fill',
+  //   name: 'RSS 订阅',
+  //   outlink: '',
+  // }
 ]
 
 /**
@@ -157,7 +149,7 @@ export const infoLinks = [
  */
 export const donate = {
   enable: false,
-  tip: "Thanks for the coffee !!!☕",
+  tip: "感谢请我喝咖啡！！！☕",
   wechatQRCode: "/WeChatQR.png",
   alipayQRCode: "/AliPayQR.png",
   paypalUrl: "https://paypal.me/xxxxxxxxxx",
@@ -199,7 +191,7 @@ export const comment = {
   type: 'giscus', // waline | giscus,
   walineConfig: {
     serverUrl: "",
-    lang: 'en',
+    lang: 'zh-cn',
     pageSize: 20,
     wordLimit: '',
     count: 5,

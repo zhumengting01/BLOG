@@ -1,6 +1,6 @@
 import {getCollectionByName} from "../utils/getCollectionByName.js";
 
-async function getBlogs(context) {
+async function getBlogs(_context) {
   const blog = await getCollectionByName('blog')
   return blog.map(blog => {
     return {

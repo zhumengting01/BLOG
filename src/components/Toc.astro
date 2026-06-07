@@ -8,8 +8,9 @@ interface Props {
 
 const { headings = [] } = Astro.props;
 
+// 支持 h1, h2, h3 层级
 const filtersHeadings = headings
-  ? headings.filter((item) => item.depth === 2 || item.depth === 3)
+  ? headings.filter((item) => item.depth >= 1 && item.depth <= 3)
   : [];
 
 const filtersHeadingsLength = filtersHeadings.length;
@@ -23,53 +24,69 @@ const filtersHeadingsLength = filtersHeadings.length;
     <i class="ri-list-check menu-icon"></i>
     {t('blog.tableOfContent')}
   </div>
-  <ul class="flex flex-col max-w-full mt-4">
-    {
-      filtersHeadings.map((item, index) => (
-        <li class="flex items-stretch">
-          {Array.from({ length: item.depth - 1 }).map((_v, _i) => (
-            <div class="flex flex-col">
-              <div
-                class:list={[
-                  _i === 0 ? 'border-left' : '',
-                  'border-skin-dodge',
-                  'border-box',
-                  'border-bottom',
-                ]}
-              />
-              {index === filtersHeadingsLength - 1 ? (
-                ''
-              ) : (
-                <div
-                  class:list={[
-                    _i === 0 ? 'border-left' : '',
-                    'border-skin-dodge',
-                    'border-box',
-                  ]}
-                />
-              )}
-            </div>
-          ))}
+  <ul class="flex flex-col max-w-full mt-4 relative">
+    {/* 贯穿整个目录的垂直引导线 */}
+    <div class="absolute left-[7px] top-0 bottom-0 w-[1px] bg-skin-dodge"></div>
 
-          <a
-            title={item.slug}
-            href={`#${item.slug}`}
-            class="inline-block pl-2 truncate border-s-purple-500"
-          >
-            {item.text}
-          </a>
-        </li>
-      ))
+    {
+      filtersHeadings.map((item, index) => {
+        const isLast = index === filtersHeadingsLength - 1;
+        const nextItem = !isLast ? filtersHeadings[index + 1] : null;
+        // 判断当前标题下是否还有更深层的子标题
+        const hasChildren = nextItem && nextItem.depth > item.depth;
+
+        return (
+          <li class:list={['flex items-start relative', `toc-depth-${item.depth}`]}>
+            {/* 层级缩进容器 */}
+            <div class="flex flex-shrink-0 relative" style={`width: ${(item.depth - 1) * 16 + 16}px;`}>
+              {/* 各级垂直引导线 */}
+              {Array.from({ length: item.depth }).map((_v, _i) => (
+                <div
+                  class="flex flex-col items-center flex-shrink-0"
+                  style={`width: 16px;`}
+                >
+                  {/* 垂直线：从顶部贯穿到底部 */}
+                  <div
+                    class:list={[
+                      'w-[1px] bg-skin-dodge',
+                      // 最后一级使用L形拐角，其他级别使用完整垂直线
+                      _i === item.depth - 1 ? 'h-[11px]' : 'h-full absolute top-0 bottom-0'
+                    ]}
+                  ></div>
+
+                  {/* L形拐角的水平部分 */}
+                  {_i === item.depth - 1 && (
+                    <div class="flex items-center w-full h-[22px] relative">
+                      {/* 水平短线 */}
+                      <div class="w-[8px] h-[1px] bg-skin-dodge absolute left-0 top-[11px]"></div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <a
+              title={item.slug}
+              href={`#${item.slug}`}
+              class:list={[
+                'inline-block truncate py-[2px] hover:text-skin-active transition-colors',
+                item.depth === 1 ? 'font-bold text-base' : '',
+                item.depth === 2 ? 'text-sm' : '',
+                item.depth === 3 ? 'text-xs' : '',
+              ]}
+            >
+              {item.text}
+            </a>
+          </li>
+        );
+      })
     }
   </ul>
 
   <style>
     .toc_container {
       overflow-y: scroll;
-      /* webkit */
-      /* firefox */
       scrollbar-width: none;
-      /* ie */
       -ms-overflow-style: none;
     }
 
@@ -82,21 +99,29 @@ const filtersHeadingsLength = filtersHeadings.length;
       color: #cc7a00;
       font-weight: 600;
     }
-    .border-left {
-      border-left: 1px solid;
+
+    /* 层级缩进 */
+    .toc-depth-1 {
+      padding-left: 0;
     }
-    .border-bottom {
-      border-bottom: 1px solid;
+
+    .toc-depth-2 {
+      padding-left: 0;
     }
-    .border-box {
-      height: 13px;
-      width: 12px;
+
+    .toc-depth-3 {
+      padding-left: 0;
+    }
+
+    /* 引导线颜色 */
+    .bg-skin-dodge {
+      background-color: rgba(var(--color-text-dodge), 0.4);
     }
   </style>
 
   <script>
-    const anchors = document.querySelectorAll('h2, h3');
-    const links = document.querySelectorAll('#toc> ul > li > a');
+    const anchors = document.querySelectorAll('h1, h2, h3');
+    const links = document.querySelectorAll('#toc > ul > li > a');
 
     const observerOptions = {
       root: null,

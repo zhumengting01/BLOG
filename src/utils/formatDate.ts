@@ -4,6 +4,7 @@ import utc from "dayjs/plugin/utc";
 import {t, type Dict} from '../i18n/utils';
 import {config} from '../consts';
 import localizedFormat from 'dayjs/plugin/localizedFormat'
+import 'dayjs/locale/zh-cn'
 
 dayjs.locale(config.lang);
 dayjs.extend(advancedFormat)

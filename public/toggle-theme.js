@@ -1,10 +1,8 @@
-const primaryColorScheme = ""; // "light" | "dark"
-
-// Get theme data from local storage
-const currentTheme = localStorage.getItem("theme");
+const primaryColorScheme = "light"; // "light" | "dark"
 
 function getPreferTheme() {
   // return theme value in local storage if it is set
+  const currentTheme = localStorage.getItem("theme");
   if (currentTheme) return currentTheme;
 
   // return primary color scheme if it is set
@@ -17,6 +15,7 @@ function getPreferTheme() {
 }
 
 let themeValue = getPreferTheme();
+let isInitialized = false;
 
 function setPreference() {
   localStorage.setItem("theme", themeValue);
@@ -27,6 +26,7 @@ function reflectPreference() {
   document.firstElementChild.setAttribute("data-theme", themeValue);
 
   document.querySelector("#theme-btn")?.setAttribute("aria-label", themeValue);
+  document.querySelector("#theme-btn-mobile")?.setAttribute("aria-label", themeValue);
 }
 
 // set early so no page flashes / CSS is made aware
@@ -36,21 +36,34 @@ function init() {
   // set on load so screen readers can get the latest value on the button
   reflectPreference();
 
-  // now this script can find and listen for clicks on the control
-  document.querySelector("#theme-btn")?.addEventListener("click", () => {
-    themeValue = themeValue === "light" ? "dark" : "light";
-    setPreference();
-  });
-  document.querySelector("#theme-btn-mobile")?.addEventListener("click", () => {
+  // Avoid adding multiple event listeners
+  if (isInitialized) return;
+  isInitialized = true;
+
+  // Use event delegation on document to handle both buttons
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("#theme-btn, #theme-btn-mobile");
+    if (!btn) return;
+    
     themeValue = themeValue === "light" ? "dark" : "light";
     setPreference();
   });
 }
 
-
 window.onload = () => {
-  init()
+  init();
 };
+
+// Astro View Transitions: re-apply theme after page transition
+document.addEventListener("astro:page-load", () => {
+  // Re-read theme from localStorage in case it changed
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    themeValue = savedTheme;
+  }
+  reflectPreference();
+  init();
+});
 
 // sync with system changes
 window.matchMedia("(prefers-color-scheme: dark)")

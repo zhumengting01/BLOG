@@ -21,7 +21,7 @@ if (totalPage === 1) {
   pager = new Array(totalPage).fill(0).map((_i, index) => index + 1);
 } else {
   if (currentPage > totalPage) {
-    return
+    currentPage = totalPage;
   }
   let diffNextPages = 2 - (totalPage - currentPage);
 

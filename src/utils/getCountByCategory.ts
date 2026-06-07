@@ -10,13 +10,7 @@ const getCountByCategory = (posts: CollectionEntry<'blog'>[]) => {
   filteredPosts.forEach(post => {
     category = compact([...category, ...flattenDeep(dealLabel(post.data.category))])
   });
-  let result = countBy(category)
-  if (result['uncategorized']) {
-    let num = result['uncategorized']
-    delete result['uncategorized']
-    result['uncategorized'] = num
-  }
-  return result;
+  return countBy(category);
 };
 
 export default getCountByCategory;
