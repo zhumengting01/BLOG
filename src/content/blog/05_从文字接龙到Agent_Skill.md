@@ -5,6 +5,7 @@ tags: ["人工智能", "LLM", "Agent"]
 category: "AI"
 source: "https://blog.csdn.net/Zmt01015621/article/details/160992843"
 ---
+> 本文核心脉络源于 B 站 UP 主**马克的技术工作坊**的视频<a href="https://www.bilibili.com/video/BV1E7wtzaEdq/?share_source=copy_web&vd_source=25f73487f10b4ba693b35269a3038b50" target="_blank">从 LLM 到 Agent Skill，一期视频带你打通底层逻辑！</a>，并补充了 **Function Calling** 这一关键机制，帮你把 AI 真正的"行动力"彻底讲透。
 
 最近两年，AI 圈的概念层出不穷：LLM、Token、Prompt、Tool、MCP、Agent……它们像一块块散落的拼图，让人看得见局部却拼不出全景。
 
