@@ -8,9 +8,9 @@ interface Props {
 
 const { headings = [] } = Astro.props;
 
-// 支持 h1, h2, h3 层级
+// 支持 h1 ~ h6 所有层级
 const filtersHeadings = headings
-  ? headings.filter((item) => item.depth >= 1 && item.depth <= 3)
+  ? headings.filter((item) => item.depth >= 1 && item.depth <= 6)
   : [];
 
 const filtersHeadingsLength = filtersHeadings.length;
@@ -73,6 +73,9 @@ const filtersHeadingsLength = filtersHeadings.length;
                 item.depth === 1 ? 'font-bold text-base' : '',
                 item.depth === 2 ? 'text-sm' : '',
                 item.depth === 3 ? 'text-xs' : '',
+                item.depth === 4 ? 'text-xs' : '',
+                item.depth === 5 ? 'text-xs' : '',
+                item.depth === 6 ? 'text-xs' : '',
               ]}
             >
               {item.text}
@@ -120,7 +123,7 @@ const filtersHeadingsLength = filtersHeadings.length;
   </style>
 
   <script>
-    const anchors = document.querySelectorAll('h1, h2, h3');
+    const anchors = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
     const links = document.querySelectorAll('#toc > ul > li > a');
 
     const observerOptions = {

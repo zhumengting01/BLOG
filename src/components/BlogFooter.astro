@@ -21,9 +21,6 @@ const {title, date, url, source} = Astro.props;
     source ?
       <div>
         {t('footer.originalLink')}：<a href={source} target="_blank" rel="noopener noreferrer" class="hover:text-skin-active">{source}</a>
-      </div> :
-      (site.url ? <div>
-        {t('footer.originalLink')}：<a href={site.url + url} target="_blank" rel="noopener noreferrer" class="hover:text-skin-active">{site.url + url}</a>
-      </div> : '')
+      </div> : ''
   }
 </div>
