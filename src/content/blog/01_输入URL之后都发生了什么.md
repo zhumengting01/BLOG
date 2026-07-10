@@ -6,8 +6,6 @@ category: "前端"
 source: "https://blog.csdn.net/Zmt01015621/article/details/159856712"
 ---
 
-> 来源：https://blog.csdn.net/Zmt01015621/article/details/159856712
-
 ## 前言
 
 当我们在浏览器导航栏输入URL（网址）之后，按下回车enter就会跳转到这个页面。

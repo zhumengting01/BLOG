@@ -9,8 +9,6 @@ source: "https://blog.csdn.net/Zmt01015621/article/details/160047016"
 > 本文适合：Vue3 初学者、从 Vue2 迁移 Vue3 的开发者、想要替代 Vuex 的前端同学
 > 
 > 开发环境：Vue3.4 + Pinia 2.1 + Vite
-> 
-> 来源：https://blog.csdn.net/Zmt01015621/article/details/160047016
 
 ## 前言
 
