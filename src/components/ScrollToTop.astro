@@ -7,22 +7,32 @@
 </button>
 
 <script>
-  let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+  const initScrollToTop = () => {
+    let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    if (!scrollToTopBtn) return;
 
-  // 监听窗口滚动事件
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 200) {
-      scrollToTopBtn.classList.remove('hidden');
-    } else {
-      scrollToTopBtn.classList.add('hidden');
-    }
-  });
-  // 获取按钮的引用
-  scrollToTopBtn.addEventListener('click', function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth' // 平滑滚动
+    scrollToTopBtn.classList.add('hidden');
+
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        scrollToTopBtn.classList.remove('hidden');
+      } else {
+        scrollToTopBtn.classList.add('hidden');
+      }
+    };
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+  };
+
+  document.addEventListener('astro:page-load', initScrollToTop);
+  initScrollToTop();
 </script>
 
