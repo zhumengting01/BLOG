@@ -4,19 +4,140 @@ import {t} from '@/i18n/utils'
 ---
 
 <IndexPage frontmatter={{comment: false, donate: false,}}>
-  <div class="flex text-xl underline-offset-4 font-bold">
-    {t('message.welcome')}
-  </div>
-  <div class="mt-4 text-gray-600 dark:text-gray-400 italic text-center text-lg leading-relaxed">
-    "那些看似不起波澜的日复一日，会突然在某一天让人看到坚持的意义。"
-  </div>
-  <div class="mt-4 text-gray-600 dark:text-gray-400 italic text-center text-lg leading-relaxed">
-    "所有的幸运，都是努力埋下的伏笔。"
-  </div>
-  <div class="mt-4 text-gray-600 dark:text-gray-400 italic text-center text-lg leading-relaxed">
-    "你只管努力，剩下的交给时间。"
-  </div>
-  <div class="mt-6">
-    {t('message.welcomeTips')}
-  </div>
+  <section class="message-wall" aria-labelledby="message-title">
+    <div class="stars" aria-hidden="true">
+      <span class="star star--one">✦</span>
+      <span class="star star--two">✧</span>
+      <span class="star star--three">✦</span>
+      <span class="star star--four">✧</span>
+      <span class="star star--five">✦</span>
+      <span class="star star--six">✧</span>
+    </div>
+    <div class="message-wall__heading">
+      <h1 id="message-title">{t('message.welcome')}</h1>
+      <p>{t('message.welcomeTips')}</p>
+    </div>
+
+    <div class="message-wall__notes">
+      <p class="note note--star">当乌云散去，自有漫天繁星。</p>
+      <p class="note note--lucky">所有的幸运，都是努力埋下的伏笔。</p>
+      <p class="note note--time">你只管努力，剩下的交给时间。</p>
+      <p class="note note--flower">慢一点没关系，花会沿途盛开。</p>
+      <p class="note note--ordinary">把平凡的日子过好，就是最了不起的浪漫。</p>
+      <p class="note note--echo">愿所有奔赴都值得，所有等待都有回音。</p>
+      <p class="note note--clear">生活不会一直难，乌云之后总有晴空。</p>
+      <p class="note note--strength">在无人问津的日子里，悄悄积蓄力量。</p>
+      <p class="note note--persist">那些看似不起波澜的日复一日，会突然在某一天让人看到坚持的意义。</p>
+    </div>
+  </section>
 </IndexPage>
+
+<style>
+  .message-wall {
+    position: relative;
+    padding: 2rem 0 1rem;
+    overflow: hidden;
+  }
+
+  .message-wall__heading {
+    margin: 0 0 2.75rem 0.7rem;
+  }
+
+  .message-wall__heading h1 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .message-wall__heading p {
+    margin: 0.65rem 0 0;
+    color: rgb(var(--color-text-dodge));
+    font-size: 0.95rem;
+  }
+
+  .message-wall__notes {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: start;
+    gap: 1.3rem 1.5rem;
+    padding: 0.4rem 0.7rem 1.5rem;
+  }
+
+  .note {
+    position: relative;
+    margin: 0;
+    padding: 1rem 1.2rem;
+    color: rgb(var(--color-text));
+    background: rgb(var(--color-fill-secondary));
+    border: 1px solid rgb(var(--color-border) / 0.38);
+    border-radius: 0.25rem 0.95rem 0.4rem 0.8rem;
+    box-shadow: 0.35rem 0.45rem 0 rgb(var(--color-border) / 0.12);
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.85;
+  }
+
+  .note::before {
+    position: absolute;
+    top: -0.38rem;
+    left: 1.1rem;
+    width: 2.3rem;
+    height: 0.65rem;
+    content: '';
+    background: rgb(var(--color-border) / 0.22);
+    transform: rotate(-5deg);
+  }
+
+  .note--star { grid-column: 1 / span 5; transform: rotate(-1.3deg); }
+  .note--lucky { grid-column: 7 / span 5; margin-top: 2.4rem; transform: rotate(1.1deg); }
+  .note--time { grid-column: 3 / span 4; margin-top: 0.8rem; transform: rotate(0.7deg); }
+  .note--flower { grid-column: 8 / span 4; margin-top: -0.5rem; transform: rotate(-1.8deg); }
+  .note--ordinary { grid-column: 1 / span 6; margin-top: 2rem; transform: rotate(1deg); }
+  .note--echo { grid-column: 7 / span 5; margin-top: 0.4rem; transform: rotate(-0.7deg); }
+  .note--clear { grid-column: 2 / span 4; margin-top: 0.9rem; transform: rotate(-1deg); }
+  .note--strength { grid-column: 7 / span 4; margin-top: 2rem; transform: rotate(1.6deg); }
+  .note--persist { grid-column: 3 / span 7; margin-top: 1.4rem; transform: rotate(-0.5deg); }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    color: rgb(var(--color-text-active) / 0.58);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  .star--one { top: 1.3rem; right: 8%; font-size: 1.15rem; transform: rotate(12deg); }
+  .star--two { top: 8.7rem; left: 4%; font-size: 0.85rem; transform: rotate(-18deg); }
+  .star--three { top: 17.5rem; right: 3%; font-size: 1.35rem; transform: rotate(16deg); }
+  .star--four { top: 26rem; left: 10%; font-size: 0.75rem; transform: rotate(-8deg); }
+  .star--five { bottom: 2.6rem; right: 13%; font-size: 1rem; transform: rotate(22deg); }
+  .star--six { bottom: 6rem; left: 2%; font-size: 0.7rem; transform: rotate(-14deg); }
+
+  @media (max-width: 719px) {
+    .message-wall { padding-top: 1.25rem; }
+    .message-wall__heading { margin-left: 0; }
+    .message-wall__notes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      padding: 0.35rem 0 1rem;
+    }
+    .note { width: min(100%, 34rem); margin: 0; transform: none; }
+    .note:nth-child(even) { align-self: flex-end; }
+    .star--three { top: 23rem; }
+    .star--four { top: 36rem; }
+    .star--five { bottom: 1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .note { transform: none; }
+  }
+</style>
