@@ -1,6 +1,6 @@
 ---
 title: "GEO 项目真正从哪里开始：从事实库到 AI 可回答的内容体系"
-date: 2026-10-24
+date: 2026-08-17
 tags: ["GEO", "AI 搜索", "内容策略", "事实库"]
 category: "AI"
 source: "https://blog.csdn.net/Zmt01015621/article/details/168976230"
