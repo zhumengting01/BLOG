@@ -1,9 +1,9 @@
 export const site = {
-  title: '朱梦婷的BLOG',
+  title: "Zhu Mengting's Blog",
   favicon: '/favicon.svg',
   description: '欢迎来到我的独立博客网站！',
   author: "朱梦婷",
-  avatar: 'https://i-avatar.csdnimg.cn/f41aae3505c04a66a27b60ffde5e7604_Zmt01015621.jpg!1',
+  avatar: '/avatar.jpg',
   url: 'https://astro-yi-nu.vercel.app',
   baseUrl: '',
   motto: '行动胜于言语。',
