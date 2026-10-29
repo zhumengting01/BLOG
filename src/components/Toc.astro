@@ -120,6 +120,12 @@ const filtersHeadings = headings
       const links = container?.querySelectorAll<HTMLAnchorElement>('ul > li > a');
       if (!toc || !container || anchors.length === 0 || !links || links.length === 0) return;
 
+      // Astro 页面切换时可能重复初始化；先移除旧的滚动监听。
+      const tocElement = toc as HTMLElement & { tocAbortController?: AbortController };
+      tocElement.tocAbortController?.abort();
+      const abortController = new AbortController();
+      tocElement.tocAbortController = abortController;
+
       let ticking = false;
 
       function updateActiveHeading() {
@@ -174,12 +180,20 @@ const filtersHeadings = headings
 
       // 初始定位
       updateActiveHeading();
-      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('scroll', onScroll, {
+        passive: true,
+        signal: abortController.signal,
+      });
     }
 
-    // 首次加载
-    document.addEventListener('DOMContentLoaded', initTocScroll);
-    // Astro View Transitions 页面切换后重新初始化
-    document.addEventListener('astro:after-swap', initTocScroll);
+    // 脚本若在 DOMContentLoaded 之后才执行，直接初始化，避免首次进入没有高亮。
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTocScroll, { once: true });
+    } else {
+      initTocScroll();
+    }
+
+    // Astro View Transitions 完成新页面渲染后再次初始化。
+    document.addEventListener('astro:page-load', initTocScroll);
   </script>
 </div>
