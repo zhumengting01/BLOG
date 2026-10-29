@@ -2,7 +2,6 @@
 import BlogPost from '@/layouts/BlogPost.astro'
 import PostTitle from "@/components/PostTitle.astro";
 import BlogFooter from '@/components/BlogFooter.astro'
-import ArticleDecorations from '@/components/ArticleDecorations.astro'
 import {getCollectionByName} from "@/utils/getCollectionByName";
 import {render} from "astro:content";
 import {sortPostsByDate} from "@/utils/sortPostsByDate";
@@ -38,7 +37,13 @@ if (sortPosts[currentPostIndex + 1]) {
 ---
 <BlogPost frontmatter={entry.data} headings={headings}>
   <div class="article-shell">
-    <ArticleDecorations />
+    <div class="article-scatter" aria-hidden="true">
+      <span class="article-scatter__clip"><i class="ri-attachment-2"></i></span>
+      <span class="article-scatter__tape"></span>
+      <span class="article-scatter__sprig">❦</span>
+      <span class="article-scatter__dots"></span>
+      <span class="article-scatter__bookmark"></span>
+    </div>
     <div class="article-shell__content">
     <div class="article-ornament" aria-hidden="true">
       <span class="article-ornament__line"></span>
@@ -94,7 +99,91 @@ if (sortPosts[currentPostIndex + 1]) {
 
   .article-shell__content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+  }
+
+  /* 分散在文章两侧的手账装饰；不占正文空间，也不影响点击。 */
+  .article-scatter {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .article-scatter__clip,
+  .article-scatter__tape,
+  .article-scatter__sprig,
+  .article-scatter__dots,
+  .article-scatter__bookmark {
+    position: absolute;
+  }
+
+  .article-scatter__clip {
+    top: 5.2rem;
+    left: -3.4rem;
+    display: grid;
+    width: 2.05rem;
+    height: 2.05rem;
+    place-items: center;
+    color: rgb(var(--color-fill-secondary));
+    background: rgb(var(--color-text-active));
+    border: 2px solid rgb(var(--color-fill-secondary));
+    border-radius: 50%;
+    box-shadow: 0.18rem 0.2rem 0 rgb(var(--color-text-active) / 0.24);
+    font-size: 1rem;
+    transform: rotate(-18deg);
+  }
+
+  .article-scatter__tape {
+    top: 14rem;
+    right: -2.15rem;
+    width: 4.8rem;
+    height: 1.1rem;
+    background: rgb(var(--color-text-active) / 0.42);
+    border-inline: 1px dashed rgb(var(--color-text-active) / 0.72);
+    transform: rotate(82deg);
+  }
+
+  .article-scatter__sprig {
+    top: 28rem;
+    left: -3.15rem;
+    color: rgb(var(--color-border));
+    font-family: Georgia, serif;
+    font-size: 3.4rem;
+    line-height: 1;
+    transform: rotate(-17deg);
+  }
+
+  .article-scatter__dots {
+    top: 43rem;
+    right: -1.6rem;
+    width: 3rem;
+    height: 4.25rem;
+    opacity: 0.88;
+    background-image: radial-gradient(rgb(var(--color-border) / 0.8) 1.4px, transparent 1.6px);
+    background-size: 0.62rem 0.62rem;
+    transform: rotate(9deg);
+  }
+
+  .article-scatter__bookmark {
+    top: 60rem;
+    left: -1.8rem;
+    width: 1.05rem;
+    height: 3.6rem;
+    background: rgb(var(--color-border) / 0.72);
+  }
+
+  .article-scatter__bookmark::after {
+    position: absolute;
+    bottom: -0.52rem;
+    left: 0;
+    width: 0;
+    height: 0;
+    content: '';
+    border-top: 0.52rem solid rgb(var(--color-border) / 0.72);
+    border-right: 0.525rem solid transparent;
+    border-left: 0.525rem solid transparent;
   }
 
   /* 正常文档流中的阅读装饰，确保不受正文高度或定位影响。 */
@@ -140,6 +229,21 @@ if (sortPosts[currentPostIndex + 1]) {
   }
 
   @media (max-width: 719px) {
+    .article-scatter__clip {
+      top: 4.7rem;
+      left: -0.4rem;
+      width: 1.55rem;
+      height: 1.55rem;
+      font-size: 0.75rem;
+    }
+
+    .article-scatter__tape,
+    .article-scatter__sprig,
+    .article-scatter__dots,
+    .article-scatter__bookmark {
+      display: none;
+    }
+
     .article-ornament {
       margin-bottom: 0.25rem;
     }
