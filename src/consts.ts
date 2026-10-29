@@ -1,5 +1,5 @@
 export const site = {
-  title: "Zhu Mengting's Blog",
+  title: "Zmt's Blog",
   favicon: '/favicon.svg',
   description: '欢迎来到我的独立博客网站！',
   author: "朱梦婷",
