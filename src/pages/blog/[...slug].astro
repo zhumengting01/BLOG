@@ -105,7 +105,7 @@ if (sortPosts[currentPostIndex + 1]) {
 
   /* 与留言页一致的轻量星芒，只点缀在文章留白边缘。 */
   .article-sparkles {
-    position: absolute;
+    position: fixed;
     z-index: 3;
     inset: 0;
     overflow: visible;
@@ -119,13 +119,13 @@ if (sortPosts[currentPostIndex + 1]) {
     line-height: 1;
   }
 
-  .article-sparkle--one { top: 4.75rem; left: -2.25rem; font-size: 1.15rem; transform: rotate(-12deg); }
-  .article-sparkle--two { top: 11rem; right: -1.5rem; font-size: 0.82rem; transform: rotate(18deg); }
-  .article-sparkle--three { top: 20rem; left: -2.85rem; font-size: 1.35rem; transform: rotate(9deg); }
-  .article-sparkle--four { top: 31rem; right: -1.85rem; font-size: 0.75rem; transform: rotate(-20deg); }
-  .article-sparkle--five { top: 43rem; left: -2.15rem; font-size: 1rem; transform: rotate(16deg); }
-  .article-sparkle--six { top: 56rem; right: -1.45rem; font-size: 0.85rem; transform: rotate(-8deg); }
-  .article-sparkle--seven { bottom: 4rem; left: -1.75rem; font-size: 1.1rem; transform: rotate(25deg); }
+  .article-sparkle--one { top: 22vh; left: 5vw; font-size: 1.15rem; transform: rotate(-12deg); }
+  .article-sparkle--two { top: 31vh; right: 7vw; font-size: 0.82rem; transform: rotate(18deg); }
+  .article-sparkle--three { top: 52vh; left: 3.5vw; font-size: 1.35rem; transform: rotate(9deg); }
+  .article-sparkle--four { top: 67vh; right: 5vw; font-size: 0.75rem; transform: rotate(-20deg); }
+  .article-sparkle--five { bottom: 12vh; left: 10vw; font-size: 1rem; transform: rotate(16deg); }
+  .article-sparkle--six { bottom: 7vh; right: 11vw; font-size: 0.85rem; transform: rotate(-8deg); }
+  .article-sparkle--seven { top: 14vh; right: 17vw; font-size: 1.1rem; transform: rotate(25deg); }
 
   .article-dot {
     position: absolute;
@@ -135,9 +135,9 @@ if (sortPosts[currentPostIndex + 1]) {
     border-radius: 50%;
   }
 
-  .article-dot--one { top: 8rem; left: -1.35rem; }
-  .article-dot--two { top: 36rem; right: -1.1rem; width: 0.22rem; height: 0.22rem; }
-  .article-dot--three { top: 50rem; left: -1.55rem; width: 0.25rem; height: 0.25rem; }
+  .article-dot--one { top: 35vh; left: 7.5vw; }
+  .article-dot--two { top: 48vh; right: 9vw; width: 0.22rem; height: 0.22rem; }
+  .article-dot--three { bottom: 19vh; left: 6.5vw; width: 0.25rem; height: 0.25rem; }
 
   .article-crescent {
     position: absolute;
@@ -147,8 +147,8 @@ if (sortPosts[currentPostIndex + 1]) {
     line-height: 1;
   }
 
-  .article-crescent--one { top: 25rem; right: -1.65rem; transform: rotate(18deg); }
-  .article-crescent--two { top: 66rem; right: -1.2rem; font-size: 0.92rem; transform: rotate(-12deg); }
+  .article-crescent--one { top: 42vh; right: 4.5vw; transform: rotate(18deg); }
+  .article-crescent--two { bottom: 25vh; right: 14vw; font-size: 0.92rem; transform: rotate(-12deg); }
 
   @media (max-width: 719px) {
     .article-sparkle {
@@ -159,8 +159,8 @@ if (sortPosts[currentPostIndex + 1]) {
     .article-crescent { display: none; }
 
     .article-sparkle--one,
-    .article-sparkle--three { display: block; left: 0.1rem; }
-    .article-sparkle--one { top: 2.5rem; font-size: 0.72rem; }
-    .article-sparkle--three { top: 18rem; font-size: 0.8rem; }
+    .article-sparkle--three { display: block; left: 0.75rem; }
+    .article-sparkle--one { top: 24vh; font-size: 0.72rem; }
+    .article-sparkle--three { top: 62vh; font-size: 0.8rem; }
   }
 </style>
