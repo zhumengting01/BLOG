@@ -59,10 +59,11 @@ import {t} from '@/i18n/utils'
   .message-wall__notes {
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     align-items: start;
-    gap: 1.3rem 1.5rem;
+    justify-content: space-between;
+    gap: 2.2rem 1.5rem;
     padding: 0.4rem 0.7rem 1.5rem;
   }
 
@@ -78,6 +79,7 @@ import {t} from '@/i18n/utils'
     font-size: 1rem;
     font-style: italic;
     line-height: 1.85;
+    white-space: nowrap;
   }
 
   .note::before {
@@ -91,15 +93,15 @@ import {t} from '@/i18n/utils'
     transform: rotate(-5deg);
   }
 
-  .note--star { grid-column: 1 / span 5; transform: rotate(-1.3deg); }
-  .note--lucky { grid-column: 7 / span 5; margin-top: 2.4rem; transform: rotate(1.1deg); }
-  .note--time { grid-column: 3 / span 4; margin-top: 0.8rem; transform: rotate(0.7deg); }
-  .note--flower { grid-column: 8 / span 4; margin-top: -0.5rem; transform: rotate(-1.8deg); }
-  .note--ordinary { grid-column: 1 / span 6; margin-top: 2rem; transform: rotate(1deg); }
-  .note--echo { grid-column: 7 / span 5; margin-top: 0.4rem; transform: rotate(-0.7deg); }
-  .note--clear { grid-column: 2 / span 4; margin-top: 0.9rem; transform: rotate(-1deg); }
-  .note--strength { grid-column: 7 / span 4; margin-top: 2rem; transform: rotate(1.6deg); }
-  .note--persist { grid-column: 3 / span 7; margin-top: 1.4rem; transform: rotate(-0.5deg); }
+  .note--star { margin-right: 3rem; transform: rotate(-1.3deg); }
+  .note--lucky { margin-top: 1.6rem; transform: rotate(1.1deg); }
+  .note--time { margin-left: 4rem; transform: rotate(0.7deg); }
+  .note--flower { margin-top: 1.1rem; transform: rotate(-1.8deg); }
+  .note--ordinary { margin-top: 1.7rem; transform: rotate(1deg); }
+  .note--echo { margin-top: 0.4rem; transform: rotate(-0.7deg); }
+  .note--clear { margin-left: 2rem; transform: rotate(-1deg); }
+  .note--strength { margin-top: 1.2rem; transform: rotate(1.6deg); }
+  .note--persist { margin: 1.7rem auto 0; transform: rotate(-0.5deg); }
 
   .stars {
     position: absolute;
@@ -130,7 +132,12 @@ import {t} from '@/i18n/utils'
       gap: 1.15rem;
       padding: 0.35rem 0 1rem;
     }
-    .note { width: min(100%, 34rem); margin: 0; transform: none; }
+    .note {
+      width: min(100%, 34rem);
+      margin: 0;
+      transform: none;
+      white-space: normal;
+    }
     .note:nth-child(even) { align-self: flex-end; }
     .star--three { top: 23rem; }
     .star--four { top: 36rem; }
