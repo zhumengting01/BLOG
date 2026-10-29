@@ -1,5 +1,6 @@
 ---
 title: "Vue3 + Pinia 状态管理实战教程：从入门到模块化+持久化，彻底告别 Vuex"
+description: "面向 Vue3 开发者的 Pinia 实战指南，覆盖 Store、模块化、持久化与常见踩坑。"
 date: 2026-04-11
 tags: ["Vue3", "Pinia"]
 category: "前端"

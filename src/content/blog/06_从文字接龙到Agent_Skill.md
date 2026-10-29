@@ -1,5 +1,6 @@
 ---
 title: "从文字接龙到 Agent Skill：大模型进化的底层逻辑全解"
+description: "从 Transformer、Token 到 Function Calling，梳理大模型演化为可行动智能体的底层逻辑。"
 date: 2026-05-11
 tags: ["人工智能", "LLM", "Agent"]
 category: "AI"

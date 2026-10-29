@@ -12,6 +12,12 @@ import {ceil, divide} from "lodash-es";
 
 let posts = await getCollectionByName("blog");
 let totalPage = ceil(divide(posts.length, site.archivePageSize));
+let postCountByYear = Object.fromEntries(
+  Object.entries(getPostsByYear(posts)).map(([year, yearlyPosts]) => [
+    year,
+    yearlyPosts.length,
+  ]),
+);
 
 let sortedPosts = sortPostsByDate(posts);
 sortedPosts = sortedPosts.splice(0, site.archivePageSize);
@@ -24,7 +30,12 @@ let resultPosts = getPostsByYear(sortedPosts);
       .sort((a, b) => Number(b) - Number(a))
       .map((year) => (
         <div>
-          <div class="text-2xl font-extrabold my-4">{year}</div>
+          <div class="text-2xl font-extrabold my-4">
+            {year}
+            <span class="ml-2 text-base font-normal text-skin-base/60">
+              {postCountByYear[year]} 篇
+            </span>
+          </div>
           <ul>
             {resultPosts[year].map((post) => (
               <li style="list-style-type: disc;" class="ml-4 my-2">

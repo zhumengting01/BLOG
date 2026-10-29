@@ -1,7 +1,8 @@
 ---
 title: "GEO 项目真正从哪里开始：从事实库到 AI 可回答的内容体系"
+description: "解释 GEO 项目为何应从企业事实库出发，再逐步建立问题库与 AI 可理解的内容体系。"
 date: 2026-08-17
-tags: ["GEO", "AI 搜索", "内容策略", "事实库"]
+tags: ["GEO", "内容策略", "事实库"]
 category: "AI"
 source: "https://blog.csdn.net/Zmt01015621/article/details/168976230"
 ---

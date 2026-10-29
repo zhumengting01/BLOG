@@ -1,5 +1,6 @@
 ---
 title: "输入URL之后，都发生了什么"
+description: "拆解浏览器输入 URL 后从 DNS 解析、网络连接到页面渲染的完整技术流程。"
 date: 2026-04-10
 tags: ["计算机网络"]
 category: "前端"

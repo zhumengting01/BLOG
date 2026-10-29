@@ -1,5 +1,6 @@
 ---
 title: "从“说”到“做”：ToClaw 如何让AI直接操作电脑"
+description: "介绍桌面 AI Agent ToClaw 如何理解自然语言指令，并直接操控电脑完成实际任务。"
 date: 2026-05-02
 tags: ["人工智能", "ToClaw"]
 category: "AI"

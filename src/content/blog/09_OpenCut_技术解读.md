@@ -1,5 +1,6 @@
 ---
 title: "OpenCut 技术解读：一个功能全面的 AI 多媒体在线处理平台"
+description: "基于官方资料解读 OpenCut 的视频、图片与音频 AI 处理能力，以及适用场景和限制。"
 date: 2026-06-06
 tags: ["人工智能"]
 category: "AI"

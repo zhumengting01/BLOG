@@ -1,5 +1,6 @@
 ---
 title: "Vue3 + AI 实战：从零搭建智能对话小助手"
+description: "用 Vue3、Vite 与 AI 接口从零搭建智能对话小助手，适合前端新手跟做实践。"
 date: 2026-04-20
 tags: ["Vue3", "人工智能"]
 category: "前端"

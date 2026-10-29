@@ -1,5 +1,6 @@
 ---
 title: "用 Chrome DevTools MCP 测试——从手动点击到 AI 驱动，每周省下 2 小时重复劳动"
+description: "通过 Chrome DevTools MCP 让 AI 操作浏览器，自动完成后台系统的重复测试与验证。"
 date: 2026-05-16
 tags: ["chrome devtools", "人工智能","MCP"]
 category: "AI"

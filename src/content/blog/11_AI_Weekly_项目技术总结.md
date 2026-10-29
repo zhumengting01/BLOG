@@ -1,7 +1,8 @@
 ---
 title: "AI Weekly 项目技术总结：全自动化 AI 行业周刊生成系统"
+description: "复盘 AI Weekly 自动化周刊系统的内容采集、LLM 处理、静态发布与生产运维设计。"
 date: 2026-07-10
-tags: ["AI", "自动化", "LLM", "RSS"]
+tags: ["AI", "自动化"]
 category: "AI"
 source: "https://blog.csdn.net/Zmt01015621/article/details/162770658?spm=1001.2014.3001.5502"
 ---

@@ -1,5 +1,6 @@
 ---
 title: "AIGC时代下的文章写作方法论：结构、流程与质量评估"
+description: "探讨 AIGC 时代的高质量写作方法，涵盖文章结构、人机协作流程与质量评估维度。"
 date: 2026-06-20
 tags: ["AIGC", "写作方法论"]
 category: "AI"

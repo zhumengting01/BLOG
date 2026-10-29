@@ -2,7 +2,7 @@
 title: "GEO 视角：官网做了 SEO，为何用户和 AI 都还读不懂你？"
 description: "从官网信息结构出发，梳理 SEO 与 GEO 的关系，并给出可执行的页面内容检查方法。"
 date: 2026-08-31
-tags: ["GEO", "SEO", "企业官网", "AI 搜索", "内容策略"]
+tags: ["GEO", "SEO", "内容策略"]
 category: "AI"
 ---
 
