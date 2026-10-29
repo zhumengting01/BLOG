@@ -3,6 +3,7 @@ import IndexPage from "@/layouts/IndexPage.astro";
 import Pagination from "@/components/Pagination.astro";
 import { sortPostsByDate } from "@/utils/sortPostsByDate";
 import getPostsByYear from "@/utils/getPostsByYear";
+import getPostsByMonth from "@/utils/getPostsByMonth";
 import  {site} from "@/consts";
 import { getCollectionByName } from "@/utils/getCollectionByName";
 import getUrl from "@/utils/getUrl";
@@ -36,20 +37,27 @@ let postCountByYear = Object.fromEntries(
               {postCountByYear[year]} 篇
             </span>
           </div>
-          <ul>
-            {resultPosts[year].map((post) => (
-              <li style="list-style-type: disc;" class="ml-4 my-2">
-                <a href={getUrl('/') + post.collection + '/' + post.id}>
-                  <span class="mr-4">
-                    {dayjs(post.data.date).format("YYYY-MM-DD")}
-                  </span>
-                  <span class="hover:text-skin-active">
-                  {post.data.title}
-                  </span>
-                </a>
-              </li>
+          {Object.keys(getPostsByMonth(resultPosts[year]))
+            .sort((a, b) => Number(b) - Number(a))
+            .map((month) => (
+              <div class="mb-5">
+                <div class="mb-2 text-lg font-bold">{month} 月</div>
+                <ul>
+                  {getPostsByMonth(resultPosts[year])[month].map((post) => (
+                    <li style="list-style-type: disc;" class="ml-4 my-2">
+                      <a href={getUrl('/') + post.collection + '/' + post.id}>
+                        <span class="mr-4">
+                          {dayjs(post.data.date).format("YYYY-MM-DD")}
+                        </span>
+                        <span class="hover:text-skin-active">
+                          {post.data.title}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
         </div>
       ))
   }

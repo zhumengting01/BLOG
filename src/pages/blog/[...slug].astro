@@ -52,8 +52,10 @@ if (sortPosts[currentPostIndex + 1]) {
       <span class="article-crescent article-crescent--two">☽</span>
     </div>
     <div class="article-shell__content">
-    <PostTitle {...entry.data} lastModified={lastModified} readingTime={readingTime}></PostTitle>
-    <div class="divider-horizontal"></div>
+    <div class="article-title-sticky">
+      <PostTitle {...entry.data} lastModified={lastModified} readingTime={readingTime}></PostTitle>
+      <div class="divider-horizontal"></div>
+    </div>
     <article class="markdown-body">
       <Content/>
     </article>
@@ -101,6 +103,15 @@ if (sortPosts[currentPostIndex + 1]) {
   .article-shell__content {
     position: relative;
     z-index: 2;
+  }
+
+  /* 阅读时将文章标题和摘要信息停靠在视口顶部，正文从其下方继续滚动。 */
+  .article-title-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding-top: 1rem;
+    background: rgb(var(--color-fill-secondary));
   }
 
   /* 与留言页一致的轻量星芒，只点缀在文章留白边缘。 */
