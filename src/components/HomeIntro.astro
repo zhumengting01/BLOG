@@ -1,0 +1,72 @@
+---
+import { site } from '@/consts';
+import getUrl from '@/utils/getUrl';
+---
+
+<section class="home-intro" aria-labelledby="home-intro-title">
+  <div class="home-intro__copy">
+    <p class="home-intro__kicker">独立写作 · AI 与内容方法</p>
+    <h1 id="home-intro-title">把复杂的技术与内容工作，讲成可以继续行动的下一步。</h1>
+    <p class="home-intro__description">这里记录 AI、前端实践与 GEO 内容体系：从理解问题，到做出更稳的选择。</p>
+    <div class="home-intro__actions">
+      <a class="home-intro__primary" href={getUrl('/tags/GEO')}>从 GEO 系列开始读</a>
+      <a class="home-intro__secondary" href={getUrl('/archive/1')}>浏览全部文章</a>
+    </div>
+  </div>
+  <div class="home-intro__mark" aria-hidden="true">
+    <span>Z</span>
+    <small>{site.motto}</small>
+  </div>
+</section>
+
+<style>
+  .home-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: end;
+    margin: 0 0 2.5rem;
+    padding: 2rem 0 2.25rem;
+    border-bottom: 2px solid rgb(var(--color-border));
+  }
+
+  .home-intro__kicker {
+    margin: 0 0 .8rem;
+    color: rgb(var(--color-text-active));
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+
+  .home-intro h1 {
+    max-width: 20ch;
+    margin: 0;
+    font-family: ui-serif, Georgia, 'Noto Serif SC', serif;
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.035em;
+  }
+
+  .home-intro__description {
+    max-width: 46rem;
+    margin: 1.1rem 0 0;
+    color: rgb(var(--color-text-dodge));
+  }
+
+  .home-intro__actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.4rem; }
+  .home-intro__actions a { padding: .55rem .9rem; border-radius: .35rem; line-height: 1.5; }
+  .home-intro__primary { color: rgb(var(--color-fill-secondary)); background: rgb(var(--color-text)); }
+  .home-intro__primary:hover { background: rgb(var(--color-text-active)); }
+  .home-intro__secondary { border: 1px solid rgb(var(--color-border)); }
+  .home-intro__secondary:hover { color: rgb(var(--color-text-active)); border-color: rgb(var(--color-text-active)); }
+
+  .home-intro__mark { display: flex; flex-direction: column; align-items: flex-end; color: rgb(var(--color-border)); }
+  .home-intro__mark span { font-family: ui-serif, Georgia, serif; font-size: 7rem; font-weight: 700; line-height: .72; }
+  .home-intro__mark small { max-width: 10rem; margin-top: .8rem; color: rgb(var(--color-text-dodge)); text-align: right; }
+
+  @media (max-width: 640px) {
+    .home-intro { grid-template-columns: 1fr; padding-top: .7rem; }
+    .home-intro__mark { display: none; }
+  }
+</style>

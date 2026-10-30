@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { dealLabel } from '@/utils/dealLabel';
+import { sortPostsByDate } from '@/utils/sortPostsByDate';
+import getUrl from '@/utils/getUrl';
+
+interface Props {
+  currentPost: CollectionEntry<'blog'>;
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { currentPost, posts } = Astro.props;
+const seriesPosts = sortPostsByDate([...posts])
+  .filter((post) => dealLabel(post.data.tags).includes('GEO'))
+  .reverse();
+const currentIndex = seriesPosts.findIndex((post) => post.id === currentPost.id);
+const isSeriesPost = currentIndex !== -1;
+const previous = isSeriesPost ? seriesPosts[currentIndex - 1] : undefined;
+const next = isSeriesPost ? seriesPosts[currentIndex + 1] : undefined;
+---
+
+{isSeriesPost && (
+  <nav class="series-nav" aria-label="GEO 系列文章导航">
+    <div class="series-nav__heading">
+      <span>GEO 系列</span>
+      <a href={getUrl('/tags/GEO')}>查看全部 {seriesPosts.length} 篇</a>
+    </div>
+    <div class="series-nav__links">
+      {previous ? (
+        <a href={getUrl('/blog/') + previous.id}>
+          <i class="ri-arrow-left-line" aria-hidden="true"></i>
+          <span>上一篇<br /><strong>{previous.data.title}</strong></span>
+        </a>
+      ) : <span class="series-nav__empty">从这里开始</span>}
+      {next ? (
+        <a href={getUrl('/blog/') + next.id} class="series-nav__next">
+          <span>下一篇<br /><strong>{next.data.title}</strong></span>
+          <i class="ri-arrow-right-line" aria-hidden="true"></i>
+        </a>
+      ) : <span class="series-nav__empty">系列持续更新中</span>}
+    </div>
+  </nav>
+)}
+
+<style>
+  .series-nav { margin: 2.5rem 0 1.5rem; padding: 1.1rem 1.2rem; border: 1px solid rgb(var(--color-border)); border-radius: .5rem; background: rgb(var(--color-card)); }
+  .series-nav__heading { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: .7rem; border-bottom: 1px solid rgb(var(--color-text) / .14); }
+  .series-nav__heading span { font-weight: 700; }
+  .series-nav__heading a { font-size: .9rem; color: rgb(var(--color-text-active)); }
+  .series-nav__links { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: .8rem; }
+  .series-nav__links a { display: flex; gap: .55rem; align-items: center; min-width: 0; }
+  .series-nav__links strong { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .9rem; }
+  .series-nav__next { justify-content: flex-end; text-align: right; }
+  .series-nav__empty { color: rgb(var(--color-text-dodge)); font-size: .9rem; }
+  @media (max-width: 640px) { .series-nav__links { grid-template-columns: 1fr; } .series-nav__next { justify-content: flex-start; text-align: left; } }
+</style>

@@ -52,6 +52,18 @@ import {t} from '@/i18n/utils'
       {
         name: 'description',
         weight: 0.75
+      },
+      {
+        name: 'tags',
+        weight: 0.6
+      },
+      {
+        name: 'category',
+        weight: 0.5
+      },
+      {
+        name: 'content',
+        weight: 0.35
       }
     ]
   }
@@ -79,10 +91,13 @@ import {t} from '@/i18n/utils'
     search.focus()
   })
 
-  search.addEventListener("input", (e) => {
+  let searchTimer: ReturnType<typeof setTimeout>;
+
+  search.addEventListener("input", () => {
     const searchTerm = DOMPurify.sanitize(search.value);
-    fetchSearchResults(searchTerm);
     updateSearchPageUrl(searchTerm)
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => fetchSearchResults(searchTerm), 250);
   })
 
   function updateReadout(length) {
@@ -95,7 +110,11 @@ import {t} from '@/i18n/utils'
 
   function updateSearchPageUrl(search) {
     const url = new URL(window.location.href);
-    url.searchParams.set("q", search);
+    if (search) {
+      url.searchParams.set("q", search);
+    } else {
+      url.searchParams.delete("q");
+    }
     window.history.replaceState(null, '', url);
   }
 

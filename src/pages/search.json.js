@@ -10,6 +10,7 @@ async function getBlogs(_context) {
       date: blog.data.date,
       category: blog.data.category,
       tags: blog.data.tags,
+      content: blog.body,
     }
   })
 }

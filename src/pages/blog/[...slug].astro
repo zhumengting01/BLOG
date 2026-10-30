@@ -6,6 +6,7 @@ import {getCollectionByName} from "@/utils/getCollectionByName";
 import {render} from "astro:content";
 import {sortPostsByDate} from "@/utils/sortPostsByDate";
 import getUrl from "@/utils/getUrl";
+import SeriesNav from '@/components/SeriesNav.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollectionByName("blog");
@@ -59,6 +60,7 @@ if (sortPosts[currentPostIndex + 1]) {
     <article class="markdown-body">
       <Content/>
     </article>
+    <SeriesNav currentPost={entry} posts={posts} />
     <div class="divider-horizontal"></div>
     <div class="h-8 text-skin-base">
       {

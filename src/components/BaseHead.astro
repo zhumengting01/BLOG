@@ -14,7 +14,9 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const {description = site.description, mathjax = false, mermaid = false, ogImage:ogimage = ''} = Astro.props
-let ogImage =  ogimage || new URL(Astro.url.pathname, Astro.site?.href).href;
+const ogImage = ogimage
+  ? new URL(ogimage, Astro.site).href
+  : new URL(getUrl(site.defaultOgImage), Astro.site).href;
 let title = Astro.props.title ? `${Astro.props.title} - ${site.title}` : site.title;
 ---
 <head>
@@ -34,11 +36,12 @@ let title = Astro.props.title ? `${Astro.props.title} - ${site.title}` : site.ti
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content={site.title}>
   <meta property="og:url" content={Astro.url}>
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:image" content={ogImage}>
-  <!-- <meta property="og:image:alt" content={site.description}/> -->
+  <meta property="og:image:alt" content={title}>
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">

@@ -4,6 +4,7 @@ export const site = {
   description: '欢迎来到我的独立博客网站！',
   author: "朱梦婷",
   avatar: '/avatar.jpg',
+  defaultOgImage: '/images/blog-preview.png',
   url: 'https://astro-yi-nu.vercel.app',
   baseUrl: '',
   motto: '行动胜于言语。',
